@@ -16,4 +16,5 @@ public class Main{
         if(n==0){return 0;}
         return task1(n-1)+(n*n);
     }
+}
 
