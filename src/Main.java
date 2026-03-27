@@ -1,5 +1,15 @@
 import  java.util.Scanner;
+/*
+ -Algorithms and Data Structures - Assignment 1
+ Recursion and Big-O Notation
+ *
+ -This program implements 4 recursive algorithms:
+  - 1. Sum of squares of first n positive integers
+  - 2. Sum of first n elements of an array
+  - 3. Sum of powers b^0 + b^1 + ... + b^n
+  - 4. Print N numbers in reverse order (no arrays, no loops)
 
+ */
 public class Main{
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
@@ -11,7 +21,7 @@ public class Main{
         //Task2:sum of the first n elements of the array
         System.out.println("task2 input n:");
         int n2=sc.nextInt();
-        System.out.println("Input"+n+"array elements");
+        System.out.println("Input"+n2+"array elements");
         int[] arr2=new int[n2];
         for(int i=0;i<n2;i++){
             arr2[i]= sc.nextInt();
@@ -25,6 +35,14 @@ public class Main{
         int n3=sc.nextInt();
         int result3=task3(n3,b3);
         System.out.println("Answert task3 is:"+result3);
+        //task4
+        System.out.println("Task4 input n:");
+        int n4=sc.nextInt();
+        System.out.println("Answer task4:");
+        task4(n4,sc);
+        System.out.println();
+
+        sc.close();
 
 
 
@@ -51,13 +69,29 @@ public class Main{
     }
 
     //Task3
+    // Time Complexity: O(n)
+    // Explanation: Makes n+1 recursive calls (from n down to 0).
+    // Each call does O(1) work (one Math.pow() and one addition).
+    // Therefore runtime grows linearly with n.
     public static int  task3(int n3, int b3){
         if(n3==0){
             return 1;
         }
         return task3(n3-1,b3)+(int)Math.pow(b3,n3);
     }
+    // Task 4: Print N numbers in reverse order without arrays or loops
+    // Time Complexity: O(n) - makes n recursive calls, each does O(1) work
+    public static void task4(int n4, Scanner sc){
+        if(n4==0){
+            return;
+        }
+        int num=sc.nextInt();
+        task4(n4-1,sc);
+        System.out.print(num + " ");
 
-// return task3(b,n-1)+(Math.pow(b,n3-1)+Math.pow(b))
+
+
+    }
+
 }
 
